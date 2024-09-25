@@ -14,15 +14,26 @@ datasource db {
 }
 
 model medicine {
-  id                 Int                  @id @default(autoincrement())
-  name               String               @default("")
-  stock              Int                  @default(0)
-  exp_date           DateTime             @default(now())
-  type               DrugType
-  price              Float                @default(0) @db.Double
-  createdAt          DateTime             @default(now())
-  updatedAt          DateTime             @default(now())
+  id        Int      @id @default(autoincrement())
+  name      String   @default("")
+  stock     Int      @default(0)
+  exp_date  DateTime @default(now())
+  type      DrugType
+  price     Float    @default(0) @db.Double
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  photo     String   @default("")
+
   transaction_detail transaction_detail[]
+}
+
+model admin {
+  id        Int      @id @default(autoincrement())
+  name      String   @default("")
+  email     String   @unique @default("")
+  password  String   @default("")
+  createdAt DateTime @default(now())
+  updateAt  DateTime @default(now())
 }
 
 model transaction {
